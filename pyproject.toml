@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "streamdedup"
+version = "0.1.0"
+description = "Reusable streaming deduplication and late-arrival watermarking for data pipelines"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Taiwo Hassan (Tycoach)", email = "davidtaiwo56@gmail.com" }
+]
+keywords = ["data-engineering", "streaming", "deduplication", "watermark", "bloom-filter"]
+dependencies = []
+
+[project.optional-dependencies]
+redis = ["redis>=5.0"]
+dev = ["pytest>=7.4", "pytest-cov>=4.1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+Repository = "https://github.com/tycoach/dedup-watermark"
+
+[tool.pylint.main]
+py-version = "3.9"
+
+[tool.pylint."messages control"]
+disable = [
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+]
+
+[tool.pylint.format]
+max-line-length = 100
