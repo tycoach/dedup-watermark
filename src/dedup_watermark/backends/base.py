@@ -6,14 +6,6 @@ class DedupBackend(ABC):
     """
     Contract every dedup backend must satisfy.
 
-    A backend only ever answers "have I seen this key" and "remember this key" —
-    it knows nothing about watermarks, decisions, or record shape. That split is
-    what lets DedupWatermarkProcessor swap an exact hash-set for a Bloom filter
-    (or a Redis-backed set later) without touching the watermark logic at all.
-
-    Backends are expected to bucket keys by event time internally so that
-    evict_before() can drop state for time windows that have fallen behind the
-    watermark, keeping memory bounded regardless of stream volume.
     """
 
     @abstractmethod
